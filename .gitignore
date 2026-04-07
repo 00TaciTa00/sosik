@@ -1,0 +1,12 @@
+node_modules/
+dist/
+out/
+.env
+.env.*
+CLAUDE.local.md
+.claude/settings.local.json
+electron-store/
+*.db
+*.db-shm
+*.db-wal
+*.Identifier
