@@ -266,7 +266,8 @@ main { padding: 48px; max-width: 1200px; margin: 0 auto; }
           <div class="node-tag">TRIGGER</div>
           <div class="node-title">웹훅 수신 / 수동 체크</div>
           <div class="node-desc">
-            <strong style="color:var(--color-warning)">웹훅 ON</strong> — GitLab/GitHub/로컬 git hook 신호 수신 시 자동 실행<br>
+            <strong style="color:var(--color-warning)">웹훅 ON</strong> — 레포별 고유 URL로 신호 수신 시 자동 실행<br>
+            <code style="font-size:10px;color:var(--color-text-muted)">localhost:{포트}/webhook/{레포-ID}</code><br>
             <strong style="color:var(--color-info)">수동</strong> — "AI 요약 생성" 버튼으로 언제든 실행 가능 (웹훅 ON/OFF 무관)<br>
             수동 실행 + 기존 노트 있으면 → 덮어쓰기 확인 후 재생성
           </div>
@@ -290,7 +291,7 @@ main { padding: 48px; max-width: 1200px; margin: 0 auto; }
         <div class="node type-process">
           <div class="node-tag">PROCESS</div>
           <div class="node-title">git diff 추출</div>
-          <div class="node-desc">레포별 독립 보안 제외 규칙 적용<br>경로 패턴 &amp; 확장자 패턴 (전역 규칙 없음)<br>보안 규칙 적용 후 diff 추출 — 순서 고정</div>
+          <div class="node-desc">감시 브랜치: origin/main 고정 (브랜치 지정은 차후 고도화)<br>범위: 이전 릴리즈 노트 마지막 SHA → 현재 HEAD (복수 커밋 → 릴리즈 노트 1개)<br>레포별 독립 보안 제외 규칙 적용 후 추출 — 순서 고정</div>
         </div>
         <div class="arrow"><div class="arrow-line"></div></div>
 
