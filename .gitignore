@@ -13,3 +13,4 @@ electron-store/
 *.db-shm
 *.db-wal
 *.Identifier
+docs/chatLogs/
