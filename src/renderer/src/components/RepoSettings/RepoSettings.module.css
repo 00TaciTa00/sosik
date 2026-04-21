@@ -1,0 +1,144 @@
+.container {
+  padding: 24px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  overflow-y: auto;
+  height: 100%;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--color-bg-secondary);
+}
+
+.section:last-child {
+  border-bottom: none;
+}
+
+.sectionTitle {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.readonlyFields {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: var(--color-bg-primary);
+  border-radius: var(--radius-md);
+  padding: 16px;
+}
+
+.field {
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+}
+
+.fieldLabel {
+  font-size: 12px;
+  color: var(--color-text-muted);
+  width: 90px;
+  flex-shrink: 0;
+}
+
+.fieldValue {
+  font-size: 13px;
+  color: var(--color-text-primary);
+  word-break: break-all;
+}
+
+.row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.input {
+  flex: 1;
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 12px;
+}
+
+.formField {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+
+.select {
+  width: 100%;
+}
+
+.patternList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  min-height: 32px;
+}
+
+.emptyPatterns {
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+.patternTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  background: var(--color-bg-secondary);
+  font-size: 12px;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--color-text-secondary);
+}
+
+.removeBtn {
+  font-size: 10px;
+  color: var(--color-text-muted);
+  transition: color var(--transition);
+  line-height: 1;
+}
+
+.removeBtn:hover {
+  color: var(--color-alert);
+}
+
+.dangerSection {
+  border-bottom: none;
+}
+
+.dangerTitle {
+  color: var(--color-alert);
+}
+
+.deleteMsg {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.deleteActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}

@@ -1,0 +1,28 @@
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.bug_fix {
+  background: rgba(184, 92, 92, 0.12);
+  color: var(--color-alert);
+}
+
+.feature {
+  background: rgba(94, 127, 95, 0.12);
+  color: var(--color-primary);
+}
+
+.ui {
+  background: rgba(111, 163, 160, 0.12);
+  color: var(--color-info);
+}
+
+.performance {
+  background: rgba(201, 168, 106, 0.12);
+  color: var(--color-warning);
+}
