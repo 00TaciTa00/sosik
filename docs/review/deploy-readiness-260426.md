@@ -10,7 +10,7 @@
 | 배포 준비도 | **90/100** |
 | 현재 단계 | 기능 완성 단계 |
 | CRITICAL | 0건 (이번 세션 해결) |
-| HIGH | 2건 |
+| HIGH | 1건 |
 | MEDIUM | 3건 |
 | LOW | 4건 |
 
@@ -33,7 +33,7 @@
 | AI 요약 (OpenAI) | GPT 호출 | ✅ 완성 | GPT-4o Chat Completions |
 | SQLite 저장 | 전체 데이터 영구 저장 | ✅ 완성 | CRUD 전체 구현 |
 | UI | 사이드바+4탭+전역설정 | ✅ 완성 | 실제 IPC 연결 |
-| 복사 포맷 | 마크다운/텍스트/Naver Works | ✅ 완성 | Naver Works HTML 미흡 (H-1) |
+| 복사 포맷 | 마크다운/텍스트/Naver Works | ✅ 완성 | ClipboardItem text/html 방식 |
 | 시스템 트레이 | 트레이 최소화 | ✅ 완성 | 더블클릭 복원, 우클릭 메뉴 |
 | i18n | 한/영 전환 | ✅ 완성 | translations.ts 기반 |
 
@@ -55,18 +55,12 @@
 
 ## HIGH 이슈
 
-### H-1. Naver Works 복사 포맷 불완전
+### ~~H-1. Naver Works 복사 포맷 불완전~~ ✅ 해결
 
 - **위치**: `src/renderer/src/components/ReleaseNotes/ReleaseNoteDetail.tsx`
-- **문제**: `navigator.clipboard.writeText()`는 plain text만 복사 — HTML 태그가 그대로 노출됨
+- **문제**: `navigator.clipboard.writeText()`는 plain text만 복사 — HTML 태그가 그대로 노출됨 / `<ul>` 내부에 `<br>` 삽입 문제
 - **영향**: Naver Works에 붙여넣기 시 마크업이 텍스트로 표시됨
-- **수정**: `navigator.clipboard.write()` + `ClipboardItem`으로 `text/html` MIME 타입 복사
-
-```typescript
-await navigator.clipboard.write([
-  new ClipboardItem({ 'text/html': new Blob([htmlContent], { type: 'text/html' }) })
-])
-```
+- **해결**: `ClipboardItem`으로 `text/html` MIME 타입 복사 구현 + `markdownToNaverWorks` 줄 단위 처리로 재작성 (`<br>` 내부 삽입 방지)
 
 ### H-2. IPC 핸들러 입력 검증 부재
 
@@ -161,7 +155,7 @@ if (!VALID_PLATFORMS.includes(payload.platform)) {
 
 권장
 [ ] IPC 핸들러 입력 검증 추가 (src/main/ipc/)
-[ ] Naver Works HTML 복사 수정
+[x] Naver Works HTML 복사 수정
 [ ] 핵심 모듈 단위 테스트 최소 3건 작성
 
 수동 검증
@@ -192,5 +186,5 @@ if (!VALID_PLATFORMS.includes(payload.platform)) {
 | accessToken 미저장 | HIGH | ✅ 해결 |
 | OpenAI 제공자 미구현 | — | ✅ 이번 세션 해결 |
 | 웹훅 서명 검증 없음 | — | ✅ 이번 세션 해결 |
-| Naver Works HTML 복사 | MEDIUM | HIGH (미해결) |
+| Naver Works HTML 복사 | MEDIUM | ✅ 이번 세션 해결 |
 | 테스트 파일 전무 | MEDIUM | MEDIUM (미해결) |
