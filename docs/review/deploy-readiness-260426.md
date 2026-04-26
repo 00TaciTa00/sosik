@@ -10,7 +10,7 @@
 | 배포 준비도 | **90/100** |
 | 현재 단계 | 기능 완성 단계 |
 | CRITICAL | 0건 (이번 세션 해결) |
-| HIGH | 3건 |
+| HIGH | 2건 |
 | MEDIUM | 3건 |
 | LOW | 4건 |
 
@@ -33,7 +33,7 @@
 | AI 요약 (OpenAI) | GPT 호출 | ✅ 완성 | GPT-4o Chat Completions |
 | SQLite 저장 | 전체 데이터 영구 저장 | ✅ 완성 | CRUD 전체 구현 |
 | UI | 사이드바+4탭+전역설정 | ✅ 완성 | 실제 IPC 연결 |
-| 복사 포맷 | 마크다운/텍스트/Naver Works | ✅ 완성 | Naver Works HTML 미흡 (H-2) |
+| 복사 포맷 | 마크다운/텍스트/Naver Works | ✅ 완성 | Naver Works HTML 미흡 (H-1) |
 | 시스템 트레이 | 트레이 최소화 | ✅ 완성 | 더블클릭 복원, 우클릭 메뉴 |
 | i18n | 한/영 전환 | ✅ 완성 | translations.ts 기반 |
 
@@ -55,14 +55,7 @@
 
 ## HIGH 이슈
 
-### H-1. Anthropic API 버전 구식
-
-- **위치**: `src/ai/claude.ts:17`
-- **문제**: `anthropic-version: '2023-06-01'` 하드코딩 — 2년 전 버전
-- **영향**: Anthropic이 구버전 지원 종료 시 API 호출 실패
-- **수정**: `'2024-06-01'` 이상으로 갱신 (Anthropic 공식 문서 확인 후 적용)
-
-### H-2. Naver Works 복사 포맷 불완전
+### H-1. Naver Works 복사 포맷 불완전
 
 - **위치**: `src/renderer/src/components/ReleaseNotes/ReleaseNoteDetail.tsx`
 - **문제**: `navigator.clipboard.writeText()`는 plain text만 복사 — HTML 태그가 그대로 노출됨
@@ -75,7 +68,7 @@ await navigator.clipboard.write([
 ])
 ```
 
-### H-3. IPC 핸들러 입력 검증 부재
+### H-2. IPC 핸들러 입력 검증 부재
 
 - **위치**: `src/main/ipc/` 전체
 - **문제**: 핸들러가 렌더러에서 온 매개변수를 타입만 신뢰하고 런타임 검증 없음
@@ -163,7 +156,6 @@ if (!VALID_PLATFORMS.includes(payload.platform)) {
 
 ```
 필수
-[ ] Anthropic API 버전 갱신 (src/ai/claude.ts:17)
 [ ] baselineSha 초기화 자동화 또는 UI 입력 필드 추가
 [ ] Windows/macOS 빌드 성공 확인
 
